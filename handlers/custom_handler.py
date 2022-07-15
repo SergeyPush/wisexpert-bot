@@ -13,7 +13,7 @@ async def get_about(message: types.Message):
     elif message.text == "💵 Ціни":
         await message.answer(prices)
     elif message.text == "📞 Контакти":
-        await message.answer("This is our contacts", reply_markup=kb_inline)
+        await message.answer("Наші контакти", reply_markup=kb_inline)
 
 
 @dp.callback_query_handler(text=["open_instagram"])
