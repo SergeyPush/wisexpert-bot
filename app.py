@@ -10,7 +10,7 @@ WEBHOOK_PATH = f'/bot/{API_KEY}'
 WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 
 # webserver settings
-WEBAPP_HOST = 'localhost'
+WEBAPP_HOST = '0.0.0.0'
 WEBAPP_PORT = 8080
 
 logging.basicConfig(level=logging.INFO)
