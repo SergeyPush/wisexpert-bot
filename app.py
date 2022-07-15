@@ -3,6 +3,7 @@ from utils.set_bot_commands import set_default_commands
 from handlers import dp
 from config import bot, API_KEY, HOST
 import logging
+import os
 
 # webhook settings
 WEBHOOK_HOST = HOST
@@ -11,7 +12,7 @@ WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 
 # webserver settings
 WEBAPP_HOST = '0.0.0.0'
-WEBAPP_PORT = 5000
+WEBAPP_PORT = int(os.environ.get('PORT', 5000))
 
 logging.basicConfig(level=logging.INFO)
 
