@@ -1,12 +1,19 @@
+from aiogram.types import InputFile
+
 from config import bot, dp
 from aiogram import types
 from utils import back, kb_client, kb_inline
 from utils import company_description, services_list, prices
+from os import getcwd
 
 
 @dp.message_handler()
 async def get_about(message: types.Message):
     if message.text == "👸 Про нас":
+        dir = getcwd()
+        file = open(f"{dir}/static/image.png", "r+b")
+        photo = InputFile(file)
+        await message.answer_photo(photo)
         await bot.send_message(message.from_user.id, company_description)
     elif message.text == "💼 Послуги":
         await message.answer(services_list)
