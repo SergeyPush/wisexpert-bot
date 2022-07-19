@@ -31,8 +31,8 @@ async def on_shutdown(dp):
 
 if __name__ == "__main__":
     if ENV == 'test':
-        executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
-    else:
+        executor.start_polling(dp, skip_updates=True)
+    if ENV == 'prod':
         executor.start_webhook(
             dispatcher=dp,
             webhook_path=WEBHOOK_PATH,
