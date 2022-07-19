@@ -30,6 +30,7 @@ async def on_shutdown(dp):
 
 
 if __name__ == "__main__":
+    print(f"Starting on {ENV}")
     if ENV == 'test':
         executor.start_polling(dp, skip_updates=True)
     if ENV == 'prod':
