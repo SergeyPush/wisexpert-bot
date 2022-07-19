@@ -7,7 +7,7 @@ import os
 
 # webhook settings
 WEBHOOK_HOST = HOST
-WEBHOOK_PATH = f'/bot/{API_KEY}'
+WEBHOOK_PATH = f'/bot{API_KEY}'
 WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 
 # webserver settings
