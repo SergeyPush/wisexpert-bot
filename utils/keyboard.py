@@ -23,6 +23,6 @@ site_inline_button = InlineKeyboardButton(text="Website", callback_data="open_si
 contacts_inline_button = InlineKeyboardButton(text="Telegram", callback_data="open_telegram",
                                               url="https://t.me/WisExpert")
 
-kb_inline = InlineKeyboardMarkup()
+kb_inline = InlineKeyboardMarkup(row_width=2)
 kb_inline.row(instagram_inline_button, facebook_inline_button)
 kb_inline.row(site_inline_button, contacts_inline_button)

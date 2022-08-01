@@ -11,7 +11,7 @@ WEBHOOK_PATH = f'/bot{API_KEY}'
 WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 
 # webserver settings
-WEBAPP_HOST = '0.0.0.0'
+WEBAPP_HOST = '127.0.0.1'
 WEBAPP_PORT = int(os.environ.get('PORT', 5000))
 
 logging.basicConfig(level=logging.INFO)
