@@ -4,6 +4,7 @@ from handlers import dp
 from config import bot, API_KEY, HOST, ENV
 import logging
 import os
+from utils import Env
 
 # webhook settings
 WEBHOOK_HOST = HOST
@@ -19,21 +20,23 @@ logging.basicConfig(level=logging.INFO)
 
 async def on_startup(_):
     await set_default_commands(dp)
-    await bot.set_webhook(WEBHOOK_URL)
-    print("Bot started")
+    if ENV == Env.PROD:
+        await bot.set_webhook(WEBHOOK_URL)
+        print("Bot started on Webhook")
+    else:
+        print("Bot started using polling")
 
 
 async def on_shutdown(dp):
     logging.warning('Shutting down..')
-    await bot.delete_webhook()
+    if ENV == Env.PROD:
+        await bot.delete_webhook()
     logging.warning('Bye!')
 
 
 if __name__ == "__main__":
     print(f"Starting on {ENV}")
-    if ENV == 'test':
-        executor.start_polling(dp, skip_updates=True)
-    if ENV == 'prod':
+    if ENV == Env.PROD:
         executor.start_webhook(
             dispatcher=dp,
             webhook_path=WEBHOOK_PATH,
@@ -43,3 +46,5 @@ if __name__ == "__main__":
             host=WEBAPP_HOST,
             port=WEBAPP_PORT,
         )
+    else:
+        executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
